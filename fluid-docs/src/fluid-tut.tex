@@ -4,6 +4,105 @@
 \usepackage[polish]{babel}
 
 \begin{document}
-\section{Navier Stokes Equation}
 
+  \section{Fundamentalne prawo dynamiki płynu nieściśliwego}
+
+	\begin{equation}
+		\rho=const
+	\end{equation}
+
+	\begin{equation}
+		\nabla\cdot\vec{u} = 0
+	\end{equation}
+
+	\begin{equation}
+		\frac{\partial\vec{u}}{\partial t} = -\frac{1}{\rho}\nabla p + \nu\nabla^2\vec{u}-\left(\vec{u}\cdot\nabla\right)\vec{u} + \vec{g}
+	\end{equation}
+
+  \section{Fundamentalne prawo dynamiki płynu nieściśliwego i nielepkiego}
+	\label{sec:fpdpnin}
+
+	\begin{equation}
+		\rho=const
+	\end{equation}
+
+	\begin{equation}
+		\nu=0
+	\end{equation}
+
+	\begin{equation}
+		\label{eq:fpdpnin:div1}
+		\nabla\cdot\vec{u} = 0
+	\end{equation}
+
+	\begin{equation}
+		\label{eq:fpdpnin:dyn1}
+		\frac{\partial\vec{u}}{\partial t} = -\frac{1}{\rho}\nabla p -\left(\vec{u}\cdot\nabla\right)\vec{u} + \vec{g}
+	\end{equation}
+
+  \section{Równania N-S w postaci~(\ref{eq:fpdpnin:div1})~i~(\ref{eq:fpdpnin:dyn1}) dla przestrzeni 2D}
+
+	\begin{equation}
+		\label{eq:rns2du1}
+		\frac{\partial u}{\partial t} = -\frac{\partial u^2}{\partial x} - \frac{\partial uv}{\partial y} - \frac{\partial \phi}{\partial x} + g_x 
+	\end{equation}
+
+	\begin{equation}
+		\label{eq:rns2dv1}
+		\frac{\partial v}{\partial t} = -\frac{\partial uv}{\partial x} - \frac{\partial v^2}{\partial y} - \frac{\partial \phi}{\partial y} + g_y 
+	\end{equation}
+
+	\begin{equation}
+		\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} = 0
+	\end{equation}
+
+  \subsection{Równanie do wyznaczania rozkładu ciśnienia}
+
+	Różniczkując równanie~(\ref{eq:rns2du1}) po zmiennej $x$ otrzymujemy~(\ref{eq:rdwrcu1})
+
+	\begin{equation}
+		\label{eq:rdwrcu1}
+		\frac{\partial}{\partial t} \frac{\partial u}{\partial x} + \frac{\partial}{\partial x} \left (  \frac{\partial u^2}{\partial x} + \frac{\partial uv}{\partial y} \right )
+		+ \frac{1}{\rho} \frac{\partial^2 p}{\partial x^2} = 0
+	\end{equation}
+
+	Różniczkując równanie~(\ref{eq:rns2dv1}) po zmiennej $y$ otrzymujemy~(\ref{eq:rdwrcv1})
+
+	\begin{equation}
+		\label{eq:rdwrcv1}
+		\frac{\partial}{\partial t} \frac{\partial v}{\partial y} + \frac{\partial}{\partial y} \left (  \frac{\partial uv}{\partial x} + \frac{\partial v^2}{\partial y} \right )
+		+ \frac{1}{\rho} \frac{\partial^2 p}{\partial y^2} = 0
+	\end{equation}
+
+	Dodając stronami~(\ref{eq:rdwrcu1})~i~(\ref{eq:rdwrcv1})
+
+	\begin{equation}
+		\label{eq:rdwrc1}
+		\frac{\partial}{\partial t} \left ( \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} \right ) 
+		+ \frac{\partial}{\partial x} \left (  \frac{\partial u^2}{\partial x} + \frac{\partial uv}{\partial y} \right )
+		+ \frac{\partial}{\partial y} \left (  \frac{\partial uv}{\partial x} + \frac{\partial v^2}{\partial y} \right )
+		+ \frac{1}{\rho} \left (  \frac{\partial^2 p}{\partial x^2} + \frac{\partial^2 p}{\partial y^2} \right ) = 0
+	\end{equation}
+
+	Oznaczając
+
+	\begin{equation}
+		D = \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y}
+	\end{equation}
+
+	oraz
+
+	\begin{equation}
+		Q = \frac{\partial}{\partial x} \left (  \frac{\partial u^2}{\partial x} + \frac{\partial uv}{\partial y} \right )
+		+ \frac{\partial}{\partial y} \left (  \frac{\partial uv}{\partial x} + \frac{\partial v^2}{\partial y} \right )
+		= \frac{\partial^2 u^2}{\partial x^2} + \frac{\partial^2 v^2}{\partial y^2} + 2\frac{\partial^2 uv}{\partial x\partial y}
+	\end{equation}
+
+	Otrzymujemy równanie na rozkład cisnienia postaci~(\ref{eq:rdwrc2})
+
+	\begin{equation}
+		\label{eq:rdwrc2}
+		\frac{\partial}{\partial t}D = -Q - \frac{1}{\rho} \left ( \frac{\partial^2 p}{\partial x^2} + \frac{\partial^2 p}{\partial y^2} \right )
+	\end{equation}
+	
 \end{document}
