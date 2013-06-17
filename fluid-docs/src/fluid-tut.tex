@@ -104,5 +104,54 @@
 		\label{eq:rdwrc2}
 		\frac{\partial}{\partial t}D = -Q - \frac{1}{\rho} \left ( \frac{\partial^2 p}{\partial x^2} + \frac{\partial^2 p}{\partial y^2} \right )
 	\end{equation}
+
+  \subsection{Analogi różnicowe}
+
+	\begin{eqnarray}
+		u^{n+1}_{i+\frac{1}{2},j} & = & u^{n}_{i+\frac{1}{2},j} + \frac{\Delta t}{\Delta x} \left [ (u^{n}_{i,j})^2 - (u^{n}_{i+1,j})^2 \right ] \\
+			\nonumber & + & \frac{\Delta t}{\rho \Delta x} \left [ p^{n}_{i,j} - p^{n}_{i+1,j}  \right ] + \frac{\Delta t}{\Delta y} \left [ u^n_{i+\frac{1}{2},j-\frac{1}{2}} v^n_{i+\frac{1}{2},j-\frac{1}{2}} - u^n_{i+\frac{1}{2},j+\frac{1}{2}} v^n_{i+\frac{1}{2},j+\frac{1}{2}} \right ] \\
+			\nonumber & + & \Delta t g_x
+	\end{eqnarray}
+
+	\begin{eqnarray}
+		v^{n+1}_{i,j+\frac{1}{2}} & = & v^{n}_{i,j+\frac{1}{2}} + \frac{\Delta t}{\Delta x} \left [ u^n_{i-\frac{1}{2},j+\frac{1}{2}} v^n_{i-\frac{1}{2},j+\frac{1}{2}} - u^n_{i+\frac{1}{2},j+\frac{1}{2}} v^n_{i+\frac{1}{2},j+\frac{1}{2}} \right ]\\
+			\nonumber & + & \frac{\Delta t}{\Delta y} \left [ (v^{n}_{i,j})^2 - (v^{n}_{i,j+1})^2 \right ] + \frac{\Delta t}{\rho \Delta y} \left [ p^{n}_{i,j} - p^{n}_{i+1,j}  \right ] \\
+			\nonumber & + & \Delta t g_y
+	\end{eqnarray}
+
+  \subsection{Aproksymacje prędkości}
+
+	\begin{eqnarray}
+		u_{i,j} & = & \frac{1}{2} \left [ u_{i+\frac{1}{2}, j} + u_{i - \frac{1}{2},j} \right ] \\
+		u_{i+\frac{1}{2},j+\frac{1}{2}} & = & \frac{1}{2} \left [ u_{i+\frac{1}{2}, j+1} + u_{i + \frac{1}{2},j} \right ] \\
+		u_{i+\frac{1}{2},j-\frac{1}{2}} & = & \frac{1}{2} \left [ u_{i+\frac{1}{2}, j} + u_{i + \frac{1}{2},j-1} \right ] \\
+		u_{i-\frac{1}{2},j+\frac{1}{2}} & = & \frac{1}{2} \left [ u_{i-\frac{1}{2}, j+1} + u_{i-\frac{1}{2},j} \right ] 
+	\end{eqnarray}
+
+	\begin{eqnarray}
+		v_{i,j} & = & \frac{1}{2} \left [ v_{i, j+\frac{1}{2}} + v_{i,j-\frac{1}{2}} \right ] \\
+		v_{i+\frac{1}{2},j+\frac{1}{2}} & = & \frac{1}{2} \left [ v_{i+1, j+\frac{1}{2}} + v_{i,j+\frac{1}{2}} \right ] \\
+		v_{i+\frac{1}{2},j-\frac{1}{2}} & = & \frac{1}{2} \left [ v_{i+1, j-\frac{1}{2}} + v_{i,j-\frac{1}{2}} \right ] \\
+		v_{i-\frac{1}{2},j+\frac{1}{2}} & = & \frac{1}{2} \left [ v_{i, j+\frac{1}{2}} + v_{i-1,j+\frac{1}{2}} \right ] 
+	\end{eqnarray}
+
+  \subsection{Analogi różnicowe z aproksymowanymi prędkościami}
+
+
+	\begin{eqnarray}
+		u^{n+1}_{i+\frac{1}{2},j} & = & u^{n}_{i+\frac{1}{2},j} \\
+			\nonumber & + & \frac{\Delta t}{4 \Delta x} \left [ \left ( u^n_{i+\frac{1}{2}, j} + u^n_{i - \frac{1}{2},j} \right )^2 - \left ( u^n_{i+\frac{3}{2}, j} + u^n_{i + \frac{1}{2},j} \right )^2 \right ] \\
+			\nonumber & + & \frac{\Delta t}{\rho \Delta x} \left [ p^{n}_{i,j} - p^{n}_{i+1,j}  \right ] \\
+			\nonumber & + & \frac{\Delta t}{4 \Delta y} \left [ \left ( u^n_{i+\frac{1}{2}, j} + u^n_{i + \frac{1}{2},j-1} \right ) \left ( v^n_{i+1, j-\frac{1}{2}} + v^n_{i,j-\frac{1}{2}} \right ) - \left ( u^n_{i+\frac{1}{2}, j+1} + u^n_{i + \frac{1}{2},j} \right ) \left ( v^n_{i+1, j+\frac{1}{2}} + v^n_{i,j+\frac{1}{2}} \right ) \right ] \\
+			\nonumber & + & \Delta t g_x
+	\end{eqnarray}
+
+	\begin{eqnarray}
+		v^{n+1}_{i,j+\frac{1}{2}} & = & v^{n}_{i,j+\frac{1}{2}} \\
+			\nonumber & + & \frac{\Delta t}{\Delta x} \left [ u^n_{i-\frac{1}{2},j+\frac{1}{2}} v^n_{i-\frac{1}{2},j+\frac{1}{2}} - u^n_{i+\frac{1}{2},j+\frac{1}{2}} v^n_{i+\frac{1}{2},j+\frac{1}{2}} \right ]\\
+			\nonumber & + & \frac{\Delta t}{\Delta y} \left [ (v^{n}_{i,j})^2 - (v^{n}_{i,j+1})^2 \right ] \\
+			\nonumber & + & \frac{\Delta t}{\rho \Delta y} \left [ p^{n}_{i,j} - p^{n}_{i+1,j}  \right ] \\
+			\nonumber & + & \Delta t g_y
+	\end{eqnarray}
 	
 \end{document}
